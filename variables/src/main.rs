@@ -1,5 +1,36 @@
+use std::io;
+
 fn main() {
     convert_f_c();
+    fib()
+}
+
+fn int(n: String) -> i64 {
+    return n.trim().parse().expect("input number")
+}
+
+fn fib() {
+    let mut n = String::new();
+
+    println!("Input your nth for fib");
+    io::stdin()
+        .read_line(&mut n)
+        .expect("Fail read line");
+    
+    let n: i64 = int(n);
+
+    let f = fibonacci(n);
+    println!("{n}th fib is {f}");
+}
+
+fn fibonacci(n: i64) -> i64 {
+    if n == 0 {
+        return 0
+    } else if n == 1{
+        return 1
+    } else {
+        return fibonacci(n-1) + fibonacci(n-2)
+    }
 }
 
 fn convert_f_c() {
